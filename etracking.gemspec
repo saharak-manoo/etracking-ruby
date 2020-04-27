@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.authors     = ['Saharak Manoo']
   s.email       = 'Saharakmanoo@outlook.com'
   s.files       = ["lib/etracking.rb", "lib/etracking/client.rb"]
-  s.homepage    = 'https://github.com/Saharak-Dove/etracking-sdk-ruby'
+  s.homepage    = 'https://github.com/Saharak-Dove/etracking-ruby'
   s.license     = 'MIT'
   s.executables << 'etracking'
 
