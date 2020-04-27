@@ -9,15 +9,11 @@ module Etracking
   #      config.api_key = ENV["etracking_api_key"]
   #      config.key_secret = ENV["etracking_key_secret"]
   #      config.language = ENV["etracking_language"] || 'TH'
-  #      config.is_develop = ENV["is_develop"] || true
-  #      config.thailand_post_api_key = ENV['thailand_post_api_key']
   #   end
   
   class Client
-    $TRACKS_PATH = "api/v2/tracks"
-
     #  @return [String]
-    attr_accessor :api_key, :key_secret, :language, :is_develop, :thailand_post_api_key
+    attr_accessor :api_key, :key_secret, :language
 
     # Initialize a new client.
     #
@@ -31,11 +27,7 @@ module Etracking
     end
 
     def endpoint
-      if is_develop.nil? || is_develop == true
-        @endpoint = "http://165.22.52.6/"
-      else
-        @endpoint = "https://etrackings.com/"
-      end
+      'http://etrackings.com/api/v2/tracks/'
     end
 
     def rest_client_api(url, method, headers, payload)
@@ -63,7 +55,7 @@ module Etracking
 
     def api(service, tracking_number)
       rest_client_api(
-        "#{endpoint}#{$TRACKS_PATH}/#{service}", 
+        "#{endpoint}#{service}", 
         "post", 
         headers, 
         payload_tracking_number(tracking_number)
@@ -98,11 +90,11 @@ module Etracking
       api('shopee_express', tracking_number)
     end
 
-    def thailand_post(tracking_number)
-      thailand_post_api_key
+    # def thailand_post(tracking_number)
+    #   thailand_post_api_key
 
-      api('thailand_post', tracking_number)
-    end
+    #   api('thailand_post', tracking_number)
+    # end
 
     def payload_tracking_number(tracking_number)
       {
