@@ -28,7 +28,7 @@ module Etracking
     end
 
     def endpoint
-      'http://etrackings.com/api/v2/tracks/'
+      'https://etrackings.com/api/v2/tracks/'
     end
 
     def headers(request)

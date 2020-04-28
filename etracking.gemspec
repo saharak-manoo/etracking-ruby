@@ -3,7 +3,7 @@ require File.expand_path('../lib/etracking/version', __FILE__)
 Gem::Specification.new do |s|
   s.name        = 'etracking'
   s.version     = Etracking::VERSION
-  s.date        = '2020-04-27'
+  s.date        = '2020-04-28'
   s.summary     = 'For eTracking api'
   s.description = 'For eTracking api'
   s.authors     = ['Saharak Manoo']
