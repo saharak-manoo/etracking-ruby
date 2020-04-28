@@ -13,8 +13,6 @@ Gem::Specification.new do |s|
   s.license     = 'MIT'
   s.executables << 'etracking'
 
-  s.add_dependency('rest-client', '~> 2.0.1')
-
   s.add_development_dependency 'addressable', '~> 2.3'
   s.add_development_dependency 'bundler', '~> 1.11'
   s.add_development_dependency 'rake', '~> 13.0'
