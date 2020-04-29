@@ -14,7 +14,7 @@ module Etracking
   
   class Client
     #  @return [String]
-    attr_accessor :api_key, :key_secret, :language, :thailand_post_api_key
+    attr_accessor :api_key, :key_secret, :language
 
     # Initialize a new client.
     #
@@ -31,27 +31,22 @@ module Etracking
       'https://etrackings.com/api/v2/tracks/'
     end
 
-    def headers(request)
+    def rest_api(path, payload)
       api_key_required
       key_secret_required
 
-      request['etracking-api-key'] = api_key
-      request['etracking-key-secret'] = key_secret
-      request['accept-language'] =  language || 'TH'
-      request['content-type'] = 'application/json'
-
-      request
-    end
-
-    def rest_api(path, payload)
       url = URI("#{endpoint}#{path}")
 
-      http = Net::HTTP.new(url.host, url.port);
-      request = Net::HTTP::Post.new(url)
-      request = headers(request)
-      request.body = payload.to_json
+      https = Net::HTTP.new(url.host, url.port);
+      https.use_ssl = true
 
-      response = http.request(request)
+      request = Net::HTTP::Post.new(url)
+      request["etracking-api-key"] = api_key
+      request["etracking-key-secret"] = key_secret
+      request["content-type"] = ["application/json", "text/plain"]
+      request.body = payload.to_json
+      response = https.request(request)
+
       JSON.parse(response.read_body, { symbolize_names: true } )
     end
 
@@ -90,7 +85,7 @@ module Etracking
     def thailand_post(tracking_number)
       thailand_post_api_key
 
-      api('thailand_post', payload_tracking_number(tracking_number))
+      api('/thailand_post', payload_tracking_number(tracking_number))
     end
 
     def payload_with_service_and_tracking_number(service_name, tracking_number)
