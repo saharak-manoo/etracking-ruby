@@ -43,6 +43,7 @@ module Etracking
       request = Net::HTTP::Post.new(url)
       request["etracking-api-key"] = api_key
       request["etracking-key-secret"] = key_secret
+      request["accept-language"] = language || 'th'
       request["content-type"] = ["application/json", "text/plain"]
       request.body = payload.to_json
       response = https.request(request)
@@ -83,8 +84,6 @@ module Etracking
     end
 
     def thailand_post(tracking_number)
-      thailand_post_api_key
-
       api('/thailand_post', payload_tracking_number(tracking_number))
     end
 
@@ -109,10 +108,6 @@ module Etracking
 
     def key_secret_required
       raise ArgumentError, '`key_secret` is not configured' unless key_secret
-    end
-
-    def thailand_post_api_key_required
-      raise ArgumentError, '`thailand_post_api_key` is not configured' unless thailand_post_api_key
     end
   end
 end
