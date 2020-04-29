@@ -84,7 +84,7 @@ module Etracking
     end
 
     def thailand_post(tracking_number)
-      api('/thailand_post', payload_tracking_number(tracking_number))
+      rest_api('/thailand_post', payload_tracking_number(tracking_number))
     end
 
     def payload_with_service_and_tracking_number(service_name, tracking_number)
