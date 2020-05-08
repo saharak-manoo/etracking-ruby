@@ -51,6 +51,10 @@ module Etracking
       JSON.parse(response.read_body, { symbolize_names: true } )
     end
 
+    def tracks(service_name, tracking_numbers = [])
+      rest_api('', payload_with_service_and_tracking_numbers(service_name, tracking_number))
+    end
+
     def track(service_name, tracking_number)
       rest_api('/find', payload_with_service_and_tracking_number(service_name, tracking_number))
     end
@@ -85,6 +89,13 @@ module Etracking
 
     def thailand_post(tracking_number)
       rest_api('/thailand_post', payload_tracking_number(tracking_number))
+    end
+
+    def payload_with_service_and_tracking_numbers(service_name, tracking_numbers)
+      {
+        service_name: service_name,
+        tracking_numbers: tracking_numbers
+      }
     end
 
     def payload_with_service_and_tracking_number(service_name, tracking_number)
