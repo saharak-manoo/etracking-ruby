@@ -28,7 +28,7 @@ module Etracking
     end
 
     def endpoint
-      'https://etrackings.com/api/v2/tracks/'
+      'https://etrackings.com/api/v2/tracks'
     end
 
     def rest_api(path, payload)
@@ -51,12 +51,16 @@ module Etracking
       JSON.parse(response.read_body, { symbolize_names: true } )
     end
 
-    def tracks(service_name, tracking_numbers = [])
-      rest_api('', payload_with_service_and_tracking_numbers(service_name, tracking_number))
+    def auto_detect(tracking_numbers = [])
+      rest_api('/auto_detect', payload_tracking_number(tracking_number))
     end
 
-    def track(service_name, tracking_number)
-      rest_api('/find', payload_with_service_and_tracking_number(service_name, tracking_number))
+    def tracks(courier, tracking_numbers = [])
+      rest_api('', payload_with_courier_and_tracking_numbers(courier, tracking_number))
+    end
+
+    def track(courier, tracking_number)
+      rest_api('/find', payload_with_courier_and_tracking_number(courier, tracking_number))
     end
 
     def dhl_express(tracking_number)
@@ -91,16 +95,16 @@ module Etracking
       rest_api('/thailand_post', payload_tracking_number(tracking_number))
     end
 
-    def payload_with_service_and_tracking_numbers(service_name, tracking_numbers)
+    def payload_with_courier_and_tracking_numbers(courier, tracking_numbers)
       {
-        service_name: service_name,
+        courier: courier,
         tracking_numbers: tracking_numbers
       }
     end
 
-    def payload_with_service_and_tracking_number(service_name, tracking_number)
+    def payload_with_courier_and_tracking_number(courier, tracking_number)
       {
-        service_name: service_name,
+        courier: courier,
         tracking_number: tracking_number
       }
     end
