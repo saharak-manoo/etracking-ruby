@@ -51,7 +51,7 @@ module Etracking
       JSON.parse(response.read_body, { symbolize_names: true } )
     end
 
-    def auto_detect(tracking_numbers = [])
+    def auto_detect(tracking_number)
       rest_api('/auto_detect', payload_tracking_number(tracking_number))
     end
 
