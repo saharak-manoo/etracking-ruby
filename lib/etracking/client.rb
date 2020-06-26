@@ -1,6 +1,6 @@
 require 'uri'
 require 'net/http'
-require 'json' 
+require 'json'
 
 module Etracking
 
@@ -11,7 +11,7 @@ module Etracking
   #      config.key_secret = ENV["etracking_key_secret"]
   #      config.language = ENV["etracking_language"] || 'TH'
   #   end
-  
+
   class Client
     #  @return [String]
     attr_accessor :api_key, :key_secret, :language
@@ -28,7 +28,7 @@ module Etracking
     end
 
     def endpoint
-      'https://etrackings.com/api/v2/tracks'
+      'https://api.etrackings.com/v2/tracks'
     end
 
     def rest_api(path, payload)
@@ -78,7 +78,7 @@ module Etracking
     def kerry_express(tracking_number)
       rest_api('/kerry_express', payload_tracking_number(tracking_number))
     end
-    
+
     def lazada_express(tracking_number)
       rest_api('/lazada_express', payload_tracking_number(tracking_number))
     end
