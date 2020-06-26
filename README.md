@@ -11,7 +11,7 @@ The eTrackings API for Ruby makes it easy to develop using eTrackings API
 
 See the official API documentation for more information
 
-- THAI: https://etrackings.com/documents/overview
+- THAI: https://docs.etrackings.com/documents/overview
 
 ## Installation
 
@@ -52,13 +52,13 @@ class Example
   def track_by_courier(courier = "dhl_express", tracking_number = "THBCA12652305942")
     # courier ให้ใส่ชื่อขนส่งที่ระบบรองรับ
     client.track(courier, tracking_number)
-    #https://etrackings.com/documents/trackings
+    # ดูเพิ่มเติม https://docs.etrackings.com/documents/trackings
   end
 
   def track_kerry_express(tracking_number = "THBCA12652305942")
     # สามารถ เรียกชื่อขนส่งได้เลย
     client.kerry_express(tracking_number)
-    #https://etrackings.com/documents/trackings
+    # ดูเพิ่มเติม https://docs.etrackings.com/documents/trackings
   end
 end
 ```
