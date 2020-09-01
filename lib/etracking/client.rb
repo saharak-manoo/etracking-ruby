@@ -39,6 +39,7 @@ module Etracking
 
       https = Net::HTTP.new(url.host, url.port);
       https.use_ssl = true
+      https.read_timeout = 12
 
       request = Net::HTTP::Post.new(url)
       request["etracking-api-key"] = api_key
@@ -93,6 +94,42 @@ module Etracking
 
     def thailand_post(tracking_number)
       rest_api('/thailand_post', payload_tracking_number(tracking_number))
+    end
+
+    def alpha_fast(tracking_number)
+      rest_api('/alpha_fast', payload_tracking_number(tracking_number))
+    end
+
+    def best_express(tracking_number)
+      rest_api('/best_express', payload_tracking_number(tracking_number))
+    end
+
+    def cj_logistics(tracking_number)
+      rest_api('/cj_logistics', payload_tracking_number(tracking_number))
+    end
+
+    def speed_d(tracking_number)
+      rest_api('/speed_d', payload_tracking_number(tracking_number))
+    end
+
+    def ninja_van(tracking_number)
+      rest_api('/ninja_van', payload_tracking_number(tracking_number))
+    end
+
+    def nim_express(tracking_number)
+      rest_api('/nim_express', payload_tracking_number(tracking_number))
+    end
+
+    def bee_express(tracking_number)
+      rest_api('/bee_express', payload_tracking_number(tracking_number))
+    end
+
+    def inter_express(tracking_number)
+      rest_api('/inter_express', payload_tracking_number(tracking_number))
+    end
+
+    def tnt_express(tracking_number)
+      rest_api('/tnt_express', payload_tracking_number(tracking_number))
     end
 
     def payload_with_courier_and_tracking_numbers(courier, tracking_numbers)
