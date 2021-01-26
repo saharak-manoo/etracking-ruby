@@ -5,7 +5,7 @@
 
 ## Introduction
 
-The eTrackings API for Ruby makes it easy to develop using eTrackings API
+The ETrackings API for Ruby makes it easy to develop using ETrackings API
 
 ## Documentation
 
@@ -18,7 +18,7 @@ See the official API documentation for more information
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'etracking'
+gem 'etrackings'
 ```
 
 And then execute:
@@ -30,7 +30,7 @@ bundle install
 Or install it yourself as:
 
 ```sh
-gem install etracking
+gem install etrackings
 ```
 
 ## Synopsis
@@ -42,23 +42,23 @@ Usage:
 
 class Example
   def client
-    @client ||= Etracking::Client.new do |config|
-      config.api_key = ENV["etracking_api_key"]
-      config.key_secret = ENV["etracking_key_secret"]
-      config.language = ENV["etracking_language"] || 'TH'
+    @client ||= Etrackings::Client.new do |config|
+      config.api_key = ENV["etrackings_api_key"]
+      config.key_secret = ENV["etrackings_key_secret"]
+      config.language = ENV["etrackings_language"] || 'TH'
     end
   end
 
-  def track_by_courier(courier = "dhl_express", tracking_number = "THBCA12652305942")
+  def track_by_courier(courier = "dhl-express", tracking_no = "THBCA12652305942")
     # courier ให้ใส่ชื่อขนส่งที่ระบบรองรับ
-    client.track(courier, tracking_number)
-    # ดูเพิ่มเติม https://docs.etrackings.com/documents/trackings
+    client.track(courier, tracking_no)
+    # ดูเพิ่มเติม https://apps.etrackings.com/docs/trackings
   end
 
-  def track_kerry_express(tracking_number = "THBCA12652305942")
+  def track_kerry_express(tracking_no = "THBCA12652305942")
     # สามารถ เรียกชื่อขนส่งได้เลย
-    client.kerry_express(tracking_number)
-    # ดูเพิ่มเติม https://docs.etrackings.com/documents/trackings
+    client.kerry_express(tracking_no)
+    # ดูเพิ่มเติม https://apps.etrackings.com/docs/trackings
   end
 end
 ```

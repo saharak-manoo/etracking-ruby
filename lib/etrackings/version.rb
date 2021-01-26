@@ -1,5 +1,5 @@
-module Etracking
-  VERSION_INFO = [2, 7, 6].freeze
+module Etrackings
+  VERSION_INFO = [3, 0, 0].freeze
   VERSION = VERSION_INFO.map(&:to_s).join('.').freeze
 
   def self.version

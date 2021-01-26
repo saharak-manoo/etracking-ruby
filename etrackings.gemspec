@@ -1,17 +1,17 @@
-require File.expand_path('../lib/etracking/version', __FILE__)
+require File.expand_path('../lib/etrackings/version', __FILE__)
 
 Gem::Specification.new do |s|
-  s.name        = 'etracking'
-  s.version     = Etracking::VERSION
+  s.name        = 'etrackings'
+  s.version     = Etrackings::VERSION
   s.date        = '2020-04-29'
-  s.summary     = 'For eTracking api'
-  s.description = 'For eTracking api'
+  s.summary     = 'For ETrackings API'
+  s.description = 'For ETrackings API'
   s.authors     = ['Saharak Manoo']
   s.email       = 'Saharakmanoo@outlook.com'
-  s.files       = ["lib/etracking.rb", "lib/etracking/client.rb"]
+  s.files       = ["lib/etrackings.rb", "lib/etrackings/client.rb"]
   s.homepage    = 'https://github.com/Saharak-Dove/etracking-ruby'
   s.license     = 'MIT'
-  s.executables << 'etracking'
+  s.executables << 'etrackings'
 
   s.add_development_dependency 'addressable', '~> 2.3'
   s.add_development_dependency 'bundler', '~> 1.11'

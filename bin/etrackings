@@ -1,7 +1,7 @@
-require 'etracking'
+require 'etrackings'
 
 def client
-  @client ||= Etracking::Client.new do |config|
+  @client ||= Etrackings::Client.new do |config|
     config.api_key = 'l72f8c215460ac4c2ea72702c3a48b5c62'
     config.key_secret = '01a3c4687d6a4f93a44e90d33911ba67'
     config.language = 'TH'
