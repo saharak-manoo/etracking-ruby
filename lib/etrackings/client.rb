@@ -27,7 +27,7 @@ module Etrackings
     end
 
     def endpoint
-      'https://fast.etrackings.com/v3/tracks'
+      'https://fast.etrackings.com/api/v3/tracks'
     end
 
     def rest_api(path, payload)
@@ -36,7 +36,7 @@ module Etrackings
 
       url = URI("#{endpoint}#{path}")
 
-      https = Net::HTTP.new(url.host, url.port);
+      https = Net::HTTP.new(url.host, url.port)
       https.use_ssl = true
       https.read_timeout = 12
 
